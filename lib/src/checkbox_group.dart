@@ -37,7 +37,7 @@ class CheckboxGroup extends StatefulWidget {
   final GroupedButtonsOrientation orientation;
 
   /// Called when needed to build a CheckboxGroup element.
-  final Widget Function(Checkbox checkBox, Text label, int index) itemBuilder;
+  final Widget Function(Checkbox checkBox, String label, int index) itemBuilder;
 
   //THESE FIELDS ARE FOR THE CHECKBOX
 
@@ -118,14 +118,7 @@ class _CheckboxGroupState extends State<CheckboxGroup> {
                       tristate: widget.tristate,
                     );
 
-      Text t = Text(
-        widget.labels.elementAt(i),
-        style: (widget.disabled != null && widget.disabled.contains(widget.labels.elementAt(i))) ?
-                  widget.labelStyle.apply(color: Theme.of(context).disabledColor) :
-                  widget.labelStyle
-      );
-
-
+      String t = widget.labels.elementAt(i);
 
       //use user defined method to build
       if(widget.itemBuilder != null)
@@ -139,7 +132,7 @@ class _CheckboxGroupState extends State<CheckboxGroup> {
             SizedBox(width: 12.0),
             cb,
             SizedBox(width: 12.0),
-            t,
+            Text(t),
           ]));
 
         }else{ //horizontal orientation means Row with Column inside
@@ -147,7 +140,7 @@ class _CheckboxGroupState extends State<CheckboxGroup> {
           content.add(Column(children: <Widget>[
             cb,
             SizedBox(width: 12.0),
-            t,
+            Text(t),
           ]));
 
         }
