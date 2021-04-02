@@ -159,6 +159,7 @@ class _CheckboxGroupState extends State<CheckboxGroup> {
   void onChanged(bool isChecked, int i){
     bool isAlreadyContained = _selected.contains(widget.labels.elementAt(i));
 
+    
     if(mounted){
       setState(() {
         if(!isChecked && isAlreadyContained){
